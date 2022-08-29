@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Andriy Stetsiuk. All rights reserved.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="andriy_points_item">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="Id"/>
+        <column xsi:type="varchar" name="name" default="null" nullable="false" length="255" comment="Name"/>
+        <column xsi:type="varchar" name="address" default="null" nullable="false" length="255" comment="Address"/>
+        <column xsi:type="varchar" name="latitude" default="null" nullable="false" length="255" comment="Latitude"/>
+        <column xsi:type="varchar" name="longitude" default="null" nullable="false" length="255" comment="Longitude"/>
+        <column xsi:type="varchar" name="location" default="null" nullable="false" length="255" comment="Location"/>
+        <column xsi:type="varchar" name="shipping_id" default="null" nullable="false" comment="Shipping method"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+</schema>

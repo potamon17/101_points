@@ -1,0 +1,17 @@
+{
+  "name": "potamon17/101_points",
+  "description": "Extend for add Pick-up Points",
+  "require": {
+    "php": "~8.0.0"
+  },
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Andriy\\Points\\": ""
+    }
+  }
+}

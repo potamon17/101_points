@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Andriy Stetsiuk. All rights reserved.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">points_form.points_form_data_source</item>
+            <item name="deps" xsi:type="string">points_form.points_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Points Form</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="Andriy\Points\Block\Adminhtml\Item\Edit\BackButton"/>
+            <button name="save" class="Andriy\Points\Block\Adminhtml\Item\SaveButton"/>
+        </buttons>
+        <namespace>points_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>points_form.points_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="brands_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name  ="class" xsi:type="string">Andriy\Points\Model\Points\DataProvider</argument>
+            <argument name="name" xsi:type="string">points_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" path="*/*/save" xsi:type="url"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
+    </dataSource>
+    <fieldset name="General">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Sample Points Field</item>
+            </item>
+        </argument>
+        <field name="name" sortOrder="6" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <label translate="true">Full Name</label>
+                <dataScope>name</dataScope>
+            </settings>
+        </field>
+        <field name="address" sortOrder="7" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <label translate="true">Address</label>
+                <dataScope>address</dataScope>
+            </settings>
+        </field>
+        <field name="latitude" sortOrder="8" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <label translate="true">Latitude</label>
+                <dataScope>latitude</dataScope>
+            </settings>
+        </field>
+        <field name="longitude" sortOrder="9" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <label translate="true" >Longitude</label>
+                <dataScope>longitude</dataScope>
+                <dataType>number</dataType>
+            </settings>
+        </field>
+        <field name="location" sortOrder="10" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <label translate="true" >Location</label>
+                <dataScope>location</dataScope>
+            </settings>
+        </field>
+        <field name="shipping_id"  formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filterOptions" xsi:type="boolean">true</item>
+                    <item name="multiple" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+            <settings>
+                <required>true</required>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <label translate="true">Shipping</label>
+                <dataScope>shipping_id</dataScope>
+                <componentType>field</componentType>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Andriy\Points\Ui\Component\Source\Shipping"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

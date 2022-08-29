@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Andriy Stetsiuk. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">   <!--     <preference for="Elogic\BrandLabel\Api\Data\GridInterface" type="Elogic\BrandLabel\Model\Grid" /> -->
+    <preference for="Andriy\Points\Api\PointsRepositoryInterface" type="Andriy\Points\Model\PointsRepository"/>
+
+    <virtualType name="Andriy\Points\Model\ResourceModel\Points\Points\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">andriy_points_item</argument>
+            <argument name="resourceModel" xsi:type="string">Andriy\Points\Model\ResourceModel\Points</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="points_item_list_data_source" xsi:type="string">Andriy\Points\Model\ResourceModel\Points\Points\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Andriy\Points\Block\Adminhtml\Item\SaveButton">
+        <arguments>
+            <argument name="targetName" xsi:type="string">points_form.points_form</argument>
+        </arguments>
+    </type>
+
+</config>
